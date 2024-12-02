@@ -4,7 +4,7 @@ import { GiCometSpark } from "react-icons/gi";
 
 const Profile = () => {
   return (
-    <div className=" flex flex-col justify-start py-10 items-center min-h-screen bg-gradient-to-b from-[#ff3300] to-[#fc925a]">
+    <div className=" flex flex-col justify-start pt-10 items-center  bg-gradient-to-b from-[#ff3300] to-[#fc925a]">
       <div className="flex justify-between items-center gap-2 mb-5 ">
         <GiMineExplosion className="text-yellow-400" />
         <h3 className="text-md font-bold text-white ">
