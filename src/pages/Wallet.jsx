@@ -3,7 +3,7 @@ import { FaHistory } from "react-icons/fa";
 import { FaExchangeAlt } from "react-icons/fa";
 import { BsBoxArrowInUp } from "react-icons/bs";
 import { BsBoxArrowInDown } from "react-icons/bs";
-import CryptoPrices from "../components/CryptoPrices";
+import CryptoPrices from "../APIs/CryptoPrices";
 
 const Wallet = () => {
   return (

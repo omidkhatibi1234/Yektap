@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
+import { GridLoader } from "react-spinners";
+
+const Spinner = () => (
+  <div className="flex justify-center items-center">
+    <GridLoader />
+  </div>
+);
 
 const CryptoPrices = () => {
   const [prices, setPrices] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const fetchPrices = async () => {
     try {
@@ -12,6 +20,8 @@ const CryptoPrices = () => {
       setPrices(data);
     } catch (error) {
       console.error("Error fetching the cryptocurrency prices:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -19,10 +29,21 @@ const CryptoPrices = () => {
     fetchPrices();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="py-5 px-2">
+        <h2 className="text-2xl font-bold mb-4 text-white">
+          Loading Prices...
+        </h2>
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
     <div className="py-5 px-2">
       <h2 className="text-2xl font-bold mb-4 text-white">
-        Cryptocurrency Prices :
+        Cryptocurrency Prices:
       </h2>
       <div className="flex flex-col space-y-2">
         {Object.keys(prices).map((key) => (
