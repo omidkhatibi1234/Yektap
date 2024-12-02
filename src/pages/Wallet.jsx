@@ -3,15 +3,16 @@ import { FaHistory } from "react-icons/fa";
 import { FaExchangeAlt } from "react-icons/fa";
 import { BsBoxArrowInUp } from "react-icons/bs";
 import { BsBoxArrowInDown } from "react-icons/bs";
+import CryptoPrices from "../components/CryptoPrices";
 
 const Wallet = () => {
   return (
     <div className="flex flex-col justify-between items-center w-full py-7">
       <div className="flex flex-col md:flex-row w-full justify-center items-center md:gap-0 gap-5">
-        <div className="md:w-1/2 w-full flex justify-center items-center bg-green-500">
-          <img src={cartImg} alt="" />
+        <div className="md:w-1/2 w-full flex justify-center items-center">
+          <img src={cartImg} alt="" className=" cart-shadow shadow-lg" />
         </div>
-        <div className="md:w-1/2 w-full bg-red-500 flex justify-center items-center md:gap-7 gap-3">
+        <div className="md:w-1/2 w-full flex justify-center items-center md:gap-7 gap-3">
           <button className="hover-btn">
             <a
               href="#"
@@ -50,7 +51,9 @@ const Wallet = () => {
           </button>
         </div>
       </div>
-      <div></div>
+      <div className="w-full mt-5">
+        <CryptoPrices />
+      </div>
     </div>
   );
 };
