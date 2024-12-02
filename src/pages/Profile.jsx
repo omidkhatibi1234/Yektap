@@ -16,9 +16,16 @@ const Profile = () => {
         You're earning Bitcoin every moment with our unique system.
       </p>
       <Timer />
-      <button className="text-[#ff3300] bg-white font-semibold px-10 py-1 rounded-md mt-2 mb-5 hover:bg-[#ff3300] hover:text-white hover:scale-105 transition-transform duration-200">
-        Invite
-      </button>
+      <div className="flex justify-center items-center gap-5  mt-2 mb-5">
+        <input
+          type="text"
+          placeholder="Enter your code..."
+          className="bg-transparent border-2 border-white rounded-md w-52 h-8 px-4 py-2 text-white focus:outline-none placeholder:text-white text-sm"
+        />
+        <button className="text-[#ff3300] bg-white font-semibold  w-28 h-8 rounded-md  hover:bg-[#ff3300] hover:text-white hover:scale-105 transition-transform duration-200">
+          Invite
+        </button>
+      </div>
       <div className="bg-[#003366] w-full max-h-screen p-2 flex justify-center items-center gap-3">
         <GiCometSpark className="text-white text-2xl" />
         <p className="text-white">

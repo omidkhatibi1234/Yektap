@@ -9,11 +9,11 @@
 }
 
 .rotate-icon {
-  transition: transform 0.5s ease-in-out; /* مدت زمان انیمیشن و نوع آن */
+  transition: transform 0.5s ease-in-out;
 }
 
 .hover-btn:hover .rotate-icon {
-  transform: rotate(360deg); /* چرخش 360 درجه */
+  transform: rotate(360deg);
 }
 
 .cart-shadow {
