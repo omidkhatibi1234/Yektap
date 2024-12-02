@@ -16,7 +16,7 @@ const Navbar = () => {
         </li>
       </ul>
       <h1 className=" font-bold text-white md:text-4xl sm:text-2xl text-xl w-1/3 text-right">
-        Welcome
+        Welcome user
       </h1>
     </nav>
   );
