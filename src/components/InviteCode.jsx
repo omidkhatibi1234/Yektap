@@ -21,11 +21,11 @@ const InviteCode = () => {
   };
 
   return (
-    <div className=" px-5 rounded-md bg-[#003366] overflow-hidden py-4  shadow-lg flex justify-center items-center gap-16  mt-2 mb-5">
+    <div className=" w-full md:px-5 rounded-md bg-[#003366] overflow-hidden py-4 shadow-lg flex justify-center items-center md:gap-16 gap-5 mt-2 mb-5">
       <div>
         {inviteCode ? (
           <div className="flex flex-col justify-center items-center gap-2">
-            <p className="text-white">
+            <p className="text-white flex flex-col text-sm text-center">
               Your Invite Code : <strong>{inviteCode}</strong>
             </p>
             <button
@@ -44,17 +44,17 @@ const InviteCode = () => {
           </button>
         )}
       </div>
-      <div className="flex items-center justify-center gap-3 ">
+      <div className="flex flex-col justify-center items-center md:flex-row md:items-center md:justify-center gap-3 h-1/2">
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Enter your code..."
-          className="bg-transparent border-2 border-white rounded-md w-52 px-4 py-2 text-white focus:outline-none placeholder:text-white text-sm h-fit"
+          className="bg-transparent border-2 border-white rounded-md md:w-52 w-36 px-4 md:py-2 py-1 text-white focus:outline-none placeholder:text-white md:placeholder:text-sm placeholder:text-[12px]   text-sm h-full "
         />
         <button
           onClick={handleInvite}
-          className="bg-[#ff3300] hover:bg-white hover:text-[#ff3300] text-white font-semibold py-2 px-4 rounded text-sm"
+          className="bg-[#ff3300] hover:bg-white hover:text-[#ff3300] text-white font-semibold md:py-2 md:px-4 py-1 px-2 rounded text-sm w-fit"
         >
           Confirm Code
         </button>
