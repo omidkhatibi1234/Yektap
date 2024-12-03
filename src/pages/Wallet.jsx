@@ -1,9 +1,10 @@
 import cartImg from "../assets/Card-Example.png";
+import Networking from "../components/Networking";
+import CryptoPrices from "../APIs/CryptoPrices";
 import { FaHistory } from "react-icons/fa";
 import { FaExchangeAlt } from "react-icons/fa";
 import { BsBoxArrowInUp } from "react-icons/bs";
 import { BsBoxArrowInDown } from "react-icons/bs";
-import CryptoPrices from "../APIs/CryptoPrices";
 import { IoWalletSharp } from "react-icons/io5";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 import { IoLogoUsd } from "react-icons/io";
@@ -68,6 +69,9 @@ const Wallet = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="w-full mt-5">
+        <Networking />
       </div>
       <div className="w-full mt-5">
         <CryptoPrices />
