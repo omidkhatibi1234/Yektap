@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import Wallet from "./pages/Wallet";
-import TellUserCheck from "./pages/TellUserCheck";
+import RegisterUser from "./pages/Registration";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Profile />} />
           <Route path="/wallet" element={<Wallet />} />
-          <Route path="/registration" element={<TellUserCheck />} />
+          <Route path="/registration" element={<RegisterUser />} />
         </Routes>
       </div>
     </Router>

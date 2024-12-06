@@ -109,73 +109,72 @@
 
 // export default Login;
 
+import axios from "axios";
 import { useState } from "react";
 
-const Registration = () => {
-  const [telegramId, setTelegramId] = useState("");
+const RegisterUser = () => {
   const [username, setUsername] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [message, setMessage] = useState("");
 
-  const onSubmitHandler = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Check if fields are filled
-    if (telegramId === "" || username === "") {
-      setError("Please fill all the fields");
-      return;
+    const telegramToken = "YOUR_TELEGRAM_BOT_TOKEN"; // توکن ربات تلگرام
+    const nowPaymentsApiKey = "YOUR_NOWPAYMENTS_API_KEY"; // توکن API NowPayments
+
+    // بررسی نام کاربری
+    const chatId = username.startsWith("@") ? username : `@${username}`;
+
+    try {
+      // بررسی وجود کاربر در تلگرام
+      const telegramResponse = await axios.get(
+        `https://api.telegram.org/bot${telegramToken}/getChat?chat_id=${chatId}`
+      );
+
+      if (telegramResponse.data.ok) {
+        setMessage("کاربر تلگرام یافت شد.");
+
+        // درخواست آدرس کیف پول بیت‌کوین از NowPayments
+        const walletResponse = await axios.post(
+          "https://api.nowpayments.io/v1/wallet",
+          {
+            api_key: nowPaymentsApiKey,
+            currency: "bitcoin",
+          }
+        );
+
+        if (walletResponse.data.success) {
+          setMessage(`آدرس کیف پول: ${walletResponse.data.wallet_address}`);
+        } else {
+          setMessage("خطا در ایجاد کیف پول. لطفاً دوباره تلاش کنید.");
+        }
+      } else {
+        setMessage("کاربر تلگرام یافت نشد.");
+      }
+    } catch (error) {
+      console.error("خطا:", error);
+      setMessage("خطا در ارتباط با API تلگرام یا NowPayments.");
     }
-
-    // Here you can implement your API call for registration
-    console.log("Registered:", telegramId, username);
-
-    // Simulate successful registration
-    setSuccess("Registration successful!");
-    setError(""); // Clear any previous error
   };
 
   return (
-    <div className="w-full h-screen flex items-start justify-center pt-14 md:pt-20">
-      <div className="bg-[#003366] text-white p-8 rounded-lg shadow-lg w-full md:w-1/2">
-        <h2 className="text-3xl font-bold mb-4 text-center">Registration</h2>
-        {error && <p className="text-red-500">{error}</p>}
-        {success && <p className="text-green-500">{success}</p>}
-        <form onSubmit={onSubmitHandler}>
-          <div className="mb-4">
-            <label className="block text-sm font-medium">Telegram ID</label>
-            <input
-              type="text"
-              value={telegramId}
-              onChange={(e) => setTelegramId(e.target.value)}
-              className="mt-1 text-black text-sm block w-full p-2 border rounded-md placeholder:text-[12px]"
-              placeholder="Enter your Telegram ID"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium">Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="mt-1 text-black text-sm block w-full p-2 border rounded-md placeholder:text-[12px]"
-              placeholder="Enter your Username"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-md"
-          >
-            Register
-          </button>
-        </form>
-        <div className="flex justify-between items-center mt-5">
-          {/* <a href="#" className="text-sm text-blue-300">
-            Already have an account? Login
-          </a> */}
-        </div>
-      </div>
-    </div>
+    <form onSubmit={handleRegister} className="space-y-4">
+      <input
+        type="text"
+        placeholder="نام کاربری تلگرام (با @ شروع شود)"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className="border p-2 rounded w-full"
+      />
+      <button
+        type="submit"
+        className="bg-blue-500 text-white p-2 rounded w-full"
+      >
+        ثبت نام
+      </button>
+      <p className="text-red-500">{message}</p>
+    </form>
   );
 };
 
-export default Registration;
+export default RegisterUser;
