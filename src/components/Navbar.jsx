@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { SiBitcoinsv } from "react-icons/si";
-import { FaUser } from "react-icons/fa";
+// import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -17,16 +17,16 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="w-1/3 flex justify-center items-center">
-        {/* <h1 className=" font-bold text-white md:text-4xl sm:text-2xl text-xl ">
+        <h1 className=" font-bold text-white md:text-4xl sm:text-2xl text-xl ">
           Welcome user
-        </h1> */}
-        <Link
+        </h1>
+        {/* <Link
           to="/registration"
           className="flex justify-center items-center gap-2"
         >
           <FaUser className="text-2xl cursor-pointer text-white" />
           <p className="font-semibold text-white hidden md:block">Register</p>
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );
